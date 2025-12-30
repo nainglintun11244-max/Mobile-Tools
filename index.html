@@ -10,7 +10,6 @@ body{
   margin:0;
   font-family:Arial,"Noto Sans Myanmar";
   background:#f2f2f2;
-  color:#000;
 }
 .dark{
   background:#121212;
@@ -32,19 +31,12 @@ header,footer{
 .dark .tool{background:#1e1e1e}
 button{
   padding:8px 14px;
-  margin-top:8px;
+  margin:5px;
   border:none;
   border-radius:5px;
   background:#007bff;
   color:#fff;
-  cursor:pointer;
 }
-.top{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-.count{font-size:14px}
 </style>
 </head>
 
@@ -53,42 +45,27 @@ button{
 <header>
 <h2 id="title">📱 Mobile Tools NAING LIN TUN</h2>
 <p id="sub">Educational Use Only</p>
-<div class="top">
-<button onclick="toggleLang()">🌐 MY / EN</button>
-<button onclick="toggleDark()">🌙 Dark</button>
-</div>
+
+<button onclick="langMY()">MY</button>
+<button onclick="langEN()">EN</button>
+<button onclick="toggleDark()">Dark</button>
 </header>
 
 <div class="container">
 
-<!-- TOOL 1 -->
 <div class="tool">
-<h3>ALL MOBILE TOOL</h3>
-<p id="desc1">Mobile Keygen & Utility Tool</p>
-<p class="count">Downloads: <span id="d1">0</span></p>
-<button onclick="startDownload('d1','https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file')">
-Download
-</button>
+<h3 id="t1">ALL MOBILE TOOL</h3>
+<p id="d1">Mobile Keygen & Utility Tool</p>
 </div>
 
-<!-- TOOL 2 -->
 <div class="tool">
-<h3>Samsung FRP Tool</h3>
-<p id="desc2">Samsung phones only</p>
-<p class="count">Downloads: <span id="d2">0</span></p>
-<button onclick="startDownload('d2','https://www.mediafire.com/')">
-Download
-</button>
+<h3 id="t2">Samsung FRP Tool</h3>
+<p id="d2">Samsung phones only</p>
 </div>
 
-<!-- TOOL 3 -->
 <div class="tool">
-<h3 id="appTitle">Mobile App</h3>
-<p id="desc3">Download ကိုနှိပ်ပါ</p>
-<p class="count">Downloads: <span id="d3">0</span></p>
-<button onclick="startDownload('d3','https://www.mediafire.com/')">
-Download
-</button>
+<h3 id="t3">Mobile App</h3>
+<p id="d3">Download ကိုနှိပ်ပါ</p>
 </div>
 
 </div>
@@ -98,45 +75,30 @@ Download
 </footer>
 
 <script>
-/* DOWNLOAD + PASSWORD + COUNT */
-function startDownload(id,link){
-  let pw = prompt("Password ထည့်ပါ");
-  if(pw==="1234"){
-    let c = localStorage.getItem(id) || 0;
-    c++;
-    localStorage.setItem(id,c);
-    document.getElementById(id).innerText = c;
-    window.open(link,"_blank");
-  }else{
-    alert("Password မှားနေပါတယ်");
-  }
-}
-
-/* DARK MODE */
 function toggleDark(){
   document.body.classList.toggle("dark");
 }
 
-/* LANGUAGE SWITCH */
-let my=true;
-function toggleLang(){
-  my=!my;
-  document.getElementById("title").innerText =
-    my ? "📱 Mobile Tools NAING LIN TUN" : "📱 Mobile Tools Hub";
-  document.getElementById("sub").innerText =
-    my ? "Educational Use Only" : "For Educational Use Only";
+function langMY(){
+  document.getElementById("title").innerText="📱 Mobile Tools NAING LIN TUN";
+  document.getElementById("sub").innerText="Educational Use Only";
+  document.getElementById("t1").innerText="ALL MOBILE TOOL";
+  document.getElementById("d1").innerText="Mobile Keygen & Utility Tool";
+  document.getElementById("t2").innerText="Samsung FRP Tool";
+  document.getElementById("d2").innerText="Samsung phones only";
+  document.getElementById("t3").innerText="Mobile App";
+  document.getElementById("d3").innerText="Download ကိုနှိပ်ပါ";
+}
 
-  document.getElementById("desc1").innerText =
-    my ? "Mobile Keygen & Utility Tool" : "Mobile Utility Tool";
-
-  document.getElementById("desc2").innerText =
-    my ? "Samsung phones only" : "For Samsung devices only";
-
-  document.getElementById("appTitle").innerText =
-    my ? "Mobile App" : "Mobile Application";
-
-  document.getElementById("desc3").innerText =
-    my ? "Download ကိုနှိပ်ပါ" : "Click download to get the app";
+function langEN(){
+  document.getElementById("title").innerText="📱 Mobile Tools Hub";
+  document.getElementById("sub").innerText="For Educational Purpose Only";
+  document.getElementById("t1").innerText="ALL MOBILE TOOL";
+  document.getElementById("d1").innerText="Mobile Utility Tool";
+  document.getElementById("t2").innerText="Samsung FRP Tool";
+  document.getElementById("d2").innerText="For Samsung devices only";
+  document.getElementById("t3").innerText="Mobile Application";
+  document.getElementById("d3").innerText="Click download to get the app";
 }
 </script>
 
