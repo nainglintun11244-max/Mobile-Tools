@@ -22,18 +22,14 @@ header,footer{
   text-align:center;
   padding:15px;
 }
-.container{
-  padding:15px;
-}
+.container{padding:15px}
 .tool{
   background:#fff;
   padding:15px;
   margin-bottom:15px;
   border-radius:10px;
 }
-.dark .tool{
-  background:#1e1e1e;
-}
+.dark .tool{background:#1e1e1e}
 button{
   padding:8px 14px;
   margin-top:8px;
@@ -48,10 +44,7 @@ button{
   justify-content:space-between;
   gap:10px;
 }
-.count{
-  font-size:14px;
-  margin-top:5px;
-}
+.count{font-size:14px}
 </style>
 </head>
 
@@ -60,7 +53,6 @@ button{
 <header>
 <h2 id="title">📱 Mobile Tools NAING LIN TUN</h2>
 <p id="sub">Educational Use Only</p>
-
 <div class="top">
 <button onclick="toggleLang()">🌐 MY / EN</button>
 <button onclick="toggleDark()">🌙 Dark</button>
@@ -69,6 +61,7 @@ button{
 
 <div class="container">
 
+<!-- TOOL 1 -->
 <div class="tool">
 <h3>ALL MOBILE TOOL</h3>
 <p id="desc1">Mobile Keygen & Utility Tool</p>
@@ -78,11 +71,22 @@ Download
 </button>
 </div>
 
+<!-- TOOL 2 -->
 <div class="tool">
 <h3>Samsung FRP Tool</h3>
 <p id="desc2">Samsung phones only</p>
 <p class="count">Downloads: <span id="d2">0</span></p>
 <button onclick="startDownload('d2','https://www.mediafire.com/')">
+Download
+</button>
+</div>
+
+<!-- TOOL 3 -->
+<div class="tool">
+<h3 id="appTitle">Mobile App</h3>
+<p id="desc3">Download ကိုနှိပ်ပါ</p>
+<p class="count">Downloads: <span id="d3">0</span></p>
+<button onclick="startDownload('d3','https://www.mediafire.com/')">
 Download
 </button>
 </div>
@@ -113,21 +117,28 @@ function toggleDark(){
   document.body.classList.toggle("dark");
 }
 
-/* LANGUAGE */
+/* LANGUAGE SWITCH */
 let my=true;
 function toggleLang(){
   my=!my;
   document.getElementById("title").innerText =
     my ? "📱 Mobile Tools NAING LIN TUN" : "📱 Mobile Tools Hub";
   document.getElementById("sub").innerText =
-    my ? "Educational Use Only" : "For Educational Purpose Only";
+    my ? "Educational Use Only" : "For Educational Use Only";
+
   document.getElementById("desc1").innerText =
     my ? "Mobile Keygen & Utility Tool" : "Mobile Utility Tool";
+
   document.getElementById("desc2").innerText =
-    my ? "Samsung phones only" : "Only for Samsung devices";
+    my ? "Samsung phones only" : "For Samsung devices only";
+
+  document.getElementById("appTitle").innerText =
+    my ? "Mobile App" : "Mobile Application";
+
+  document.getElementById("desc3").innerText =
+    my ? "Download ကိုနှိပ်ပါ" : "Click download to get the app";
 }
 </script>
-<script>alert("NEW CODE LOADED");</script>
 
 </body>
 </html>
