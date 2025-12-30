@@ -1,144 +1,74 @@
 <!DOCTYPE html>
-<html lang="my">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mobile Tools Myanmar</title>
+<title>Continue Download</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 body{
-  margin:0;
-  font-family:Arial,"Noto Sans Myanmar";
-  background:#f2f2f2;
-  color:#000;
-}
-.dark{
-  background:#121212;
-  color:#fff;
-}
-header,footer{
+  font-family:Arial, sans-serif;
   background:#111;
   color:#fff;
-  text-align:center;
-  padding:15px;
-}
-.container{
-  padding:15px;
-}
-.tool{
-  background:#fff;
-  padding:15px;
-  margin-bottom:15px;
-  border-radius:10px;
-}
-.dark .tool{
-  background:#1e1e1e;
-}
-a.download{
-  display:inline-block;
-  margin-top:8px;
-  padding:8px 14px;
-  background:#007bff;
-  color:#fff;
-  text-decoration:none;
-  border-radius:5px;
-}
-.top{
   display:flex;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:10px;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  margin:0;
+}
+.box{
+  background:#1e1e1e;
+  padding:25px;
+  border-radius:10px;
+  width:100%;
+  max-width:360px;
+  text-align:center;
+}
+input{
+  width:100%;
+  padding:10px;
+  margin:12px 0;
+  border-radius:6px;
+  border:none;
 }
 button{
-  padding:6px 12px;
-  border:none;
-  border-radius:5px;
-  background:#444;
+  width:100%;
+  padding:10px;
+  background:#007bff;
   color:#fff;
-  cursor:pointer;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+}
+.error{
+  color:#ff4d4d;
+  display:none;
+  margin-top:10px;
 }
 </style>
 </head>
-
 <body>
 
-<header>
-<h2 id="title">📱 Mobile Tools NAING LIN TUN</h2>
-<p id="sub">Educational Use Only</p>
+<div class="box">
+  <h2>🔒 Continue Download</h2>
+  <p>Enter password to continue</p>
 
-<div class="top">
-  <button onclick="setMY()">MY</button>
-  <button onclick="setEN()">EN</button>
-  <button onclick="toggleDark()">Dark</button>
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="check()">Continue</button>
+
+  <div class="error" id="error">❌ Wrong password</div>
 </div>
-</header>
-
-<div class="container">
-
-<!-- TOOL 1 -->
-<div class="tool">
-<h3 id="t1">ALL MOBILE TOOL</h3>
-<p id="d1">Mobile Keygen & Utility Tool</p>
-<a class="download"
-   href="https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file"
-   target="_blank">
-Download
-</a>
-</div>
-
-<!-- TOOL 2 -->
-<div class="tool">
-<h3 id="t2">Samsung FRP Tool</h3>
-<p id="d2">Samsung phones only</p>
-<a class="download"
-   href="https://www.mediafire.com/"
-   target="_blank">
-Download
-</a>
-</div>
-
-<!-- TOOL 3 -->
-<div class="tool">
-<h3 id="t3">Mobile App</h3>
-<p id="d3">Download ကိုနှိပ်ပါ</p>
-<a class="download"
-   href="https://www.mediafire.com/"
-   target="_blank">
-Download
-</a>
-</div>
-
-</div>
-
-<footer>
-<p>© 2025 Mobile Tools</p>
-</footer>
 
 <script>
-function toggleDark(){
-  document.body.classList.toggle("dark");
-}
+function check(){
+  const pass = document.getElementById("password").value;
 
-function setMY(){
-  document.getElementById("title").innerText="📱 Mobile Tools NAING LIN TUN";
-  document.getElementById("sub").innerText="Educational Use Only";
-  document.getElementById("t1").innerText="ALL MOBILE TOOL";
-  document.getElementById("d1").innerText="Mobile Keygen & Utility Tool";
-  document.getElementById("t2").innerText="Samsung FRP Tool";
-  document.getElementById("d2").innerText="Samsung phones only";
-  document.getElementById("t3").innerText="Mobile App";
-  document.getElementById("d3").innerText="Download ကိုနှိပ်ပါ";
-}
-
-function setEN(){
-  document.getElementById("title").innerText="📱 Mobile Tools Hub";
-  document.getElementById("sub").innerText="For Educational Purpose Only";
-  document.getElementById("t1").innerText="ALL MOBILE TOOL";
-  document.getElementById("d1").innerText="Mobile Utility Tool";
-  document.getElementById("t2").innerText="Samsung FRP Tool";
-  document.getElementById("d2").innerText="For Samsung devices only";
-  document.getElementById("t3").innerText="Mobile Application";
-  document.getElementById("d3").innerText="Click download to get the app";
+  // 🔑 ဒီနေရာမှာ password ပြောင်းနိုင်
+  if(pass === "1234"){
+    window.location.href =
+    "https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file";
+  }else{
+    document.getElementById("error").style.display="block";
+  }
 }
 </script>
 
