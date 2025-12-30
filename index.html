@@ -1,56 +1,102 @@
-remove('shake');
-                    }, 500);
-                    
-                    // Clear input and focus
-                    passwordInput.value = '';
-                    passwordInput.focus();
-                    
-                    // Check if no attempts left
-                    if (attempts <= 0) {
-                        disableForm();
-                        showError("No attempts remaining. Please try again later.");
-                    }
-                }
-                
-                // Reset button state
-                isChecking = false;
-                btnText.style.display = 'block';
-                loading.style.display = 'none';
-                btnIcon.style.display = 'block';
-                submitBtn.disabled = false;
-            }, 1500); // Simulated delay
+If it doesn't start automatically, click the button below.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
+                <button class="modal-btn primary" onclick="proceedDownload()">Start Download</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Password Modal -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Incorrect Password</h3>
+            <p>The password you entered is incorrect. Please try again.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn primary" onclick="closePasswordModal()">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startDirectDownload() {
+            const modal = document.getElementById('downloadModal');
+            modal.style.display = 'flex';
         }
         
-        function showError(message) {
-            const errorDiv = document.getElementById('error');
-            const errorText = document.getElementById('errorText');
+        function proceedDownload() {
+            // Show loading state
+            const modalButtons = document.querySelector('#downloadModal .modal-buttons');
+            modalButtons.innerHTML = `
+                <button class="modal-btn secondary" onclick="closeModal()" style="opacity:0.7; cursor:not-allowed;">Cancel</button>
+                <button class="modal-btn primary" style="opacity:0.7; cursor:not-allowed;">
+                    <span class="loader"></span> Downloading...
+                </button>
+            `;
             
-            errorText.textContent = message;
-            errorDiv.classList.add('show');
+            // Redirect to download after short delay
+            setTimeout(() => {
+                window.location.href = "https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file";
+            }, 1500);
         }
         
-        function disableForm() {
-            const passwordInput = document.getElementById('password');
-            const submitBtn = document.getElementById('submitBtn');
-            const toggleBtn = document.getElementById('togglePassword');
-            
-            passwordInput.disabled = true;
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.7';
-            submitBtn.style.cursor = 'not-allowed';
-            toggleBtn.disabled = true;
-            
-            submitBtn.innerHTML = '<span id="btnText">Access Locked</span><i class="fas fa-ban"></i>';
+        function closeModal() {
+            document.getElementById('downloadModal').style.display = 'none';
         }
         
-        // Optional: Simple anti-debugging
-        window.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-                e.preventDefault();
-                showError("Developer tools are disabled on this page.");
+        function showPasswordSection() {
+            document.getElementById('passwordSection').style.display = 'block';
+            document.getElementById('password').focus();
+            
+            // Scroll to password section
+            document.getElementById('passwordSection').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+        
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            
+            // Default password is 1234 (မင်းပြင်ချင်ရင် ဒီနေရာမှာ ပြောင်းလို့ရ)
+            if (password === "1234") {
+                startDirectDownload();
+            } else {
+                document.getElementById('passwordModal').style.display = 'flex';
+                document.getElementById('password').value = '';
+                document.getElementById('password').focus();
+            }
+        }
+        
+        function closePasswordModal() {
+            document.getElementById('passwordModal').style.display = 'none';
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const downloadModal = document.getElementById('downloadModal');
+            const passwordModal = document.getElementById('passwordModal');
+            
+            if (event.target === downloadModal) {
+                closeModal();
+            }
+            if (event.target === passwordModal) {
+                closePasswordModal();
+            }
+        }
+        
+        // Enter key support for password
+        document.getElementById('password')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
             }
         });
+        
+        // Fancy console message
+        console.log('%c🔐 Download Portal Active', 'color: #4dabf7; font-size: 16px; font-weight: bold;');
+        console.log('%c📥 Choose your download method above', 'color: #2ecc71; font-size: 14px;');
     </script>
 </body>
 </html>
