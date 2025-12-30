@@ -6,21 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root{
-  --bg:#f2f2f2;
-  --card:#fff;
-  --text:#000;
-}
-.dark{
-  --bg:#121212;
-  --card:#1e1e1e;
-  --text:#fff;
-}
 body{
   margin:0;
   font-family:Arial,"Noto Sans Myanmar";
-  background:var(--bg);
-  color:var(--text);
+  background:#f2f2f2;
+  color:#000;
+}
+.dark{
+  background:#121212;
+  color:#fff;
 }
 header,footer{
   background:#111;
@@ -28,40 +22,46 @@ header,footer{
   text-align:center;
   padding:15px;
 }
-.container{padding:15px}
+.container{
+  padding:15px;
+}
 .tool{
-  background:var(--card);
+  background:#fff;
   padding:15px;
   margin-bottom:15px;
   border-radius:10px;
 }
-.tool img{
-  width:100%;
-  border-radius:8px;
+.dark .tool{
+  background:#1e1e1e;
 }
-button,a{
-  margin-top:8px;
+button{
   padding:8px 14px;
-  background:#007bff;
-  color:#fff;
+  margin-top:8px;
   border:none;
   border-radius:5px;
+  background:#007bff;
+  color:#fff;
   cursor:pointer;
-  text-decoration:none;
 }
-.top-btns{
+.top{
   display:flex;
   justify-content:space-between;
+  gap:10px;
+}
+.count{
+  font-size:14px;
+  margin-top:5px;
 }
 </style>
 </head>
 
 <body>
+
 <header>
 <h2 id="title">📱 Mobile Tools NAING LIN TUN</h2>
-<p id="subtitle">Authorized & Educational Use Only</p>
+<p id="sub">Educational Use Only</p>
 
-<div class="top-btns">
+<div class="top">
 <button onclick="toggleLang()">🌐 MY / EN</button>
 <button onclick="toggleDark()">🌙 Dark</button>
 </div>
@@ -69,24 +69,20 @@ button,a{
 
 <div class="container">
 
-<!-- TOOL 1 -->
 <div class="tool">
-<img src="screenshots/alltool.png">
 <h3>ALL MOBILE TOOL</h3>
-<p id="d1">Keygen & Mobile Utility Tool</p>
-<p>Downloads: <span id="c1">0</span></p>
-<button onclick="download('c1','https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file')">
+<p id="desc1">Mobile Keygen & Utility Tool</p>
+<p class="count">Downloads: <span id="d1">0</span></p>
+<button onclick="startDownload('d1','https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file')">
 Download
 </button>
 </div>
 
-<!-- TOOL 2 -->
 <div class="tool">
-<img src="screenshots/samsung.png">
 <h3>Samsung FRP Tool</h3>
-<p id="d2">Samsung devices only</p>
-<p>Downloads: <span id="c2">0</span></p>
-<button onclick="download('c2','https://www.mediafire.com/')">
+<p id="desc2">Samsung phones only</p>
+<p class="count">Downloads: <span id="d2">0</span></p>
+<button onclick="startDownload('d2','https://www.mediafire.com/')">
 Download
 </button>
 </div>
@@ -98,14 +94,14 @@ Download
 </footer>
 
 <script>
-/* DOWNLOAD + PASSWORD */
-function download(counterId,link){
-  let pass = prompt("Password ထည့်ပါ");
-  if(pass==="1234"){
-    let c = localStorage.getItem(counterId)||0;
+/* DOWNLOAD + PASSWORD + COUNT */
+function startDownload(id,link){
+  let pw = prompt("Password ထည့်ပါ");
+  if(pw==="1234"){
+    let c = localStorage.getItem(id) || 0;
     c++;
-    localStorage.setItem(counterId,c);
-    document.getElementById(counterId).innerText=c;
+    localStorage.setItem(id,c);
+    document.getElementById(id).innerText = c;
     window.open(link,"_blank");
   }else{
     alert("Password မှားနေပါတယ်");
@@ -117,18 +113,18 @@ function toggleDark(){
   document.body.classList.toggle("dark");
 }
 
-/* LANGUAGE SWITCH */
-let mm=true;
+/* LANGUAGE */
+let my=true;
 function toggleLang(){
-  mm=!mm;
+  my=!my;
   document.getElementById("title").innerText =
-    mm ? "📱 Mobile Tools NAING LIN TUN" : "📱 Mobile Tools Hub";
-  document.getElementById("subtitle").innerText =
-    mm ? "Authorized & Educational Use Only" : "For Educational Use Only";
-  document.getElementById("d1").innerText =
-    mm ? "Keygen & Mobile Utility Tool" : "Mobile Utility Tool";
-  document.getElementById("d2").innerText =
-    mm ? "Samsung devices only" : "For Samsung phones only";
+    my ? "📱 Mobile Tools NAING LIN TUN" : "📱 Mobile Tools Hub";
+  document.getElementById("sub").innerText =
+    my ? "Educational Use Only" : "For Educational Purpose Only";
+  document.getElementById("desc1").innerText =
+    my ? "Mobile Keygen & Utility Tool" : "Mobile Utility Tool";
+  document.getElementById("desc2").innerText =
+    my ? "Samsung phones only" : "Only for Samsung devices";
 }
 </script>
 
