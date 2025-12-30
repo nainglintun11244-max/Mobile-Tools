@@ -2,48 +2,135 @@
 <html lang="my">
 <head>
 <meta charset="UTF-8">
-<meta name="google-site-verification" content="hwLiM6DjZN9e_x5URTK-F3TMJZKStG7Fs4ErUxRsmwo" />
 <title>Mobile Tools Myanmar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body{font-family:"Noto Sans Myanmar",Arial;margin:0;background:#f2f2f2}
-header,footer{background:#111;color:#fff;text-align:center;padding:15px}
+:root{
+  --bg:#f2f2f2;
+  --card:#fff;
+  --text:#000;
+}
+.dark{
+  --bg:#121212;
+  --card:#1e1e1e;
+  --text:#fff;
+}
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Myanmar";
+  background:var(--bg);
+  color:var(--text);
+}
+header,footer{
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:15px;
+}
 .container{padding:15px}
-.tool{background:#fff;padding:15px;margin-bottom:12px;border-radius:8px}
-a{display:inline-block;margin-top:8px;padding:6px 12px;
-background:#007bff;color:#fff;text-decoration:none;border-radius:5px}
+.tool{
+  background:var(--card);
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:10px;
+}
+.tool img{
+  width:100%;
+  border-radius:8px;
+}
+button,a{
+  margin-top:8px;
+  padding:8px 14px;
+  background:#007bff;
+  color:#fff;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+  text-decoration:none;
+}
+.top-btns{
+  display:flex;
+  justify-content:space-between;
+}
 </style>
 </head>
-<body>
 
+<body>
 <header>
-<h2>📱 Mobile Tools NAING LIN TUN</h2>
-<p>Authorized & Educational Use Only</p>
+<h2 id="title">📱 Mobile Tools NAING LIN TUN</h2>
+<p id="subtitle">Authorized & Educational Use Only</p>
+
+<div class="top-btns">
+<button onclick="toggleLang()">🌐 MY / EN</button>
+<button onclick="toggleDark()">🌙 Dark</button>
+</div>
 </header>
 
 <div class="container">
 
+<!-- TOOL 1 -->
 <div class="tool">
-<h3>ALL MOBILE Tool</h3>
-<p>ALL KEYGEN </p>
-<a href="https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file">Download</a>
+<img src="screenshots/alltool.png">
+<h3>ALL MOBILE TOOL</h3>
+<p id="d1">Keygen & Mobile Utility Tool</p>
+<p>Downloads: <span id="c1">0</span></p>
+<button onclick="download('c1','https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file')">
+Download
+</button>
 </div>
 
+<!-- TOOL 2 -->
 <div class="tool">
+<img src="screenshots/samsung.png">
 <h3>Samsung FRP Tool</h3>
-<p>Samsung devices only</p>
-<a href="#">Download</a>
+<p id="d2">Samsung devices only</p>
+<p>Downloads: <span id="c2">0</span></p>
+<button onclick="download('c2','https://www.mediafire.com/')">
+Download
+</button>
 </div>
- 
- <div class="tool">
-<h3>mobile app</h3>
-<p>Download ကိုနှိပ်ပါ</p>
-<a href="#">Download</a>
+
 </div>
 
 <footer>
 <p>© 2025 Mobile Tools</p>
 </footer>
+
+<script>
+/* DOWNLOAD + PASSWORD */
+function download(counterId,link){
+  let pass = prompt("Password ထည့်ပါ");
+  if(pass==="1234"){
+    let c = localStorage.getItem(counterId)||0;
+    c++;
+    localStorage.setItem(counterId,c);
+    document.getElementById(counterId).innerText=c;
+    window.open(link,"_blank");
+  }else{
+    alert("Password မှားနေပါတယ်");
+  }
+}
+
+/* DARK MODE */
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+
+/* LANGUAGE SWITCH */
+let mm=true;
+function toggleLang(){
+  mm=!mm;
+  document.getElementById("title").innerText =
+    mm ? "📱 Mobile Tools NAING LIN TUN" : "📱 Mobile Tools Hub";
+  document.getElementById("subtitle").innerText =
+    mm ? "Authorized & Educational Use Only" : "For Educational Use Only";
+  document.getElementById("d1").innerText =
+    mm ? "Keygen & Mobile Utility Tool" : "Mobile Utility Tool";
+  document.getElementById("d2").innerText =
+    mm ? "Samsung devices only" : "For Samsung phones only";
+}
+</script>
 
 </body>
 </html>
