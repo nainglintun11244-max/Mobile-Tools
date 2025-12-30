@@ -1,102 +1,146 @@
-If it doesn't start automatically, click the button below.</p>
-            <div class="modal-buttons">
-                <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
-                <button class="modal-btn primary" onclick="proceedDownload()">Start Download</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Password Modal -->
-    <div class="modal" id="passwordModal">
-        <div class="modal-content">
-            <div class="modal-icon">
-                <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <h3>Incorrect Password</h3>
-            <p>The password you entered is incorrect. Please try again.</p>
-            <div class="modal-buttons">
-                <button class="modal-btn primary" onclick="closePasswordModal()">Try Again</button>
-            </div>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<title>Mobile Tools Myanmar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-        function startDirectDownload() {
-            const modal = document.getElementById('downloadModal');
-            modal.style.display = 'flex';
-        }
-        
-        function proceedDownload() {
-            // Show loading state
-            const modalButtons = document.querySelector('#downloadModal .modal-buttons');
-            modalButtons.innerHTML = `
-                <button class="modal-btn secondary" onclick="closeModal()" style="opacity:0.7; cursor:not-allowed;">Cancel</button>
-                <button class="modal-btn primary" style="opacity:0.7; cursor:not-allowed;">
-                    <span class="loader"></span> Downloading...
-                </button>
-            `;
-            
-            // Redirect to download after short delay
-            setTimeout(() => {
-                window.location.href = "https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file";
-            }, 1500);
-        }
-        
-        function closeModal() {
-            document.getElementById('downloadModal').style.display = 'none';
-        }
-        
-        function showPasswordSection() {
-            document.getElementById('passwordSection').style.display = 'block';
-            document.getElementById('password').focus();
-            
-            // Scroll to password section
-            document.getElementById('passwordSection').scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
-        }
-        
-        function checkPassword() {
-            const password = document.getElementById('password').value;
-            
-            // Default password is 1234 (မင်းပြင်ချင်ရင် ဒီနေရာမှာ ပြောင်းလို့ရ)
-            if (password === "1234") {
-                startDirectDownload();
-            } else {
-                document.getElementById('passwordModal').style.display = 'flex';
-                document.getElementById('password').value = '';
-                document.getElementById('password').focus();
-            }
-        }
-        
-        function closePasswordModal() {
-            document.getElementById('passwordModal').style.display = 'none';
-        }
-        
-        // Close modals when clicking outside
-        window.onclick = function(event) {
-            const downloadModal = document.getElementById('downloadModal');
-            const passwordModal = document.getElementById('passwordModal');
-            
-            if (event.target === downloadModal) {
-                closeModal();
-            }
-            if (event.target === passwordModal) {
-                closePasswordModal();
-            }
-        }
-        
-        // Enter key support for password
-        document.getElementById('password')?.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
-        });
-        
-        // Fancy console message
-        console.log('%c🔐 Download Portal Active', 'color: #4dabf7; font-size: 16px; font-weight: bold;');
-        console.log('%c📥 Choose your download method above', 'color: #2ecc71; font-size: 14px;');
-    </script>
+<style>
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Myanmar";
+  background:#f2f2f2;
+  color:#000;
+}
+.dark{
+  background:#121212;
+  color:#fff;
+}
+header,footer{
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:15px;
+}
+.container{
+  padding:15px;
+}
+.tool{
+  background:#fff;
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:10px;
+}
+.dark .tool{
+  background:#1e1e1e;
+}
+a.download{
+  display:inline-block;
+  margin-top:8px;
+  padding:8px 14px;
+  background:#007bff;
+  color:#fff;
+  text-decoration:none;
+  border-radius:5px;
+}
+.top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:10px;
+}
+button{
+  padding:6px 12px;
+  border:none;
+  border-radius:5px;
+  background:#444;
+  color:#fff;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2 id="title">📱 Mobile Tools NAING LIN TUN</h2>
+<p id="sub">Educational Use Only</p>
+
+<div class="top">
+  <button onclick="setMY()">MY</button>
+  <button onclick="setEN()">EN</button>
+  <button onclick="toggleDark()">Dark</button>
+</div>
+</header>
+
+<div class="container">
+
+<!-- TOOL 1 -->
+<div class="tool">
+<h3 id="t1">ALL MOBILE TOOL</h3>
+<p id="d1">Mobile Keygen & Utility Tool</p>
+<a class="download"
+   href="https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file"
+   target="_blank">
+Download
+</a>
+</div>
+
+<!-- TOOL 2 -->
+<div class="tool">
+<h3 id="t2">Samsung FRP Tool</h3>
+<p id="d2">Samsung phones only</p>
+<a class="download"
+   href="https://www.mediafire.com/"
+   target="_blank">
+Download
+</a>
+</div>
+
+<!-- TOOL 3 -->
+<div class="tool">
+<h3 id="t3">Mobile App</h3>
+<p id="d3">Download ကိုနှိပ်ပါ</p>
+<a class="download"
+   href="https://www.mediafire.com/"
+   target="_blank">
+Download
+</a>
+</div>
+
+</div>
+
+<footer>
+<p>© 2025 Mobile Tools</p>
+</footer>
+
+<script>
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+
+function setMY(){
+  document.getElementById("title").innerText="📱 Mobile Tools NAING LIN TUN";
+  document.getElementById("sub").innerText="Educational Use Only";
+  document.getElementById("t1").innerText="ALL MOBILE TOOL";
+  document.getElementById("d1").innerText="Mobile Keygen & Utility Tool";
+  document.getElementById("t2").innerText="Samsung FRP Tool";
+  document.getElementById("d2").innerText="Samsung phones only";
+  document.getElementById("t3").innerText="Mobile App";
+  document.getElementById("d3").innerText="Download ကိုနှိပ်ပါ";
+}
+
+function setEN(){
+  document.getElementById("title").innerText="📱 Mobile Tools Hub";
+  document.getElementById("sub").innerText="For Educational Purpose Only";
+  document.getElementById("t1").innerText="ALL MOBILE TOOL";
+  document.getElementById("d1").innerText="Mobile Utility Tool";
+  document.getElementById("t2").innerText="Samsung FRP Tool";
+  document.getElementById("d2").innerText="For Samsung devices only";
+  document.getElementById("t3").innerText="Mobile Application";
+  document.getElementById("d3").innerText="Click download to get the app";
+}
+</script>
+
 </body>
 </html>
