@@ -1,76 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Continue Download</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body{
-  font-family:Arial, sans-serif;
-  background:#111;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100vh;
-  margin:0;
-}
-.box{
-  background:#1e1e1e;
-  padding:25px;
-  border-radius:10px;
-  width:100%;
-  max-width:360px;
-  text-align:center;
-}
-input{
-  width:100%;
-  padding:10px;
-  margin:12px 0;
-  border-radius:6px;
-  border:none;
-}
-button{
-  width:100%;
-  padding:10px;
-  background:#007bff;
-  color:#fff;
-  border:none;
-  border-radius:6px;
-  font-size:16px;
-}
-.error{
-  color:#ff4d4d;
-  display:none;
-  margin-top:10px;
-}
-</style>
-</head>
-<body>
-
-<div class="box">
-  <h2>🔒 Continue Download</h2>
-  <p>Enter password to continue</p>
-
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="check()">Continue</button>
-
-  <div class="error" id="error">❌ Wrong password</div>
-</div>
-
-<script>
-function check(){
-  const pass = document.getElementById("password").value;
-
-  // 🔑 ဒီနေရာမှာ password ပြောင်းနိုင်
-  if(pass === "1234"){
-    window.location.href =
-    "https://www.mediafire.com/file/2ldomnni6tlyt3m/VG+Tool+4.1_KeyGen.rar/file";
-  }else{
-    document.getElementById("error").style.display="block";
-  }
-}
-</script>
-
+remove('shake');
+                    }, 500);
+                    
+                    // Clear input and focus
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                    
+                    // Check if no attempts left
+                    if (attempts <= 0) {
+                        disableForm();
+                        showError("No attempts remaining. Please try again later.");
+                    }
+                }
+                
+                // Reset button state
+                isChecking = false;
+                btnText.style.display = 'block';
+                loading.style.display = 'none';
+                btnIcon.style.display = 'block';
+                submitBtn.disabled = false;
+            }, 1500); // Simulated delay
+        }
+        
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            const errorText = document.getElementById('errorText');
+            
+            errorText.textContent = message;
+            errorDiv.classList.add('show');
+        }
+        
+        function disableForm() {
+            const passwordInput = document.getElementById('password');
+            const submitBtn = document.getElementById('submitBtn');
+            const toggleBtn = document.getElementById('togglePassword');
+            
+            passwordInput.disabled = true;
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.cursor = 'not-allowed';
+            toggleBtn.disabled = true;
+            
+            submitBtn.innerHTML = '<span id="btnText">Access Locked</span><i class="fas fa-ban"></i>';
+        }
+        
+        // Optional: Simple anti-debugging
+        window.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+                showError("Developer tools are disabled on this page.");
+            }
+        });
+    </script>
 </body>
 </html>
